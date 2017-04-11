@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 import webpagepanel.ChineseEtymPanel;
+import zhongwenpanel.ZhongwenPanel;
 
 /**
  *
@@ -17,16 +18,19 @@ import webpagepanel.ChineseEtymPanel;
 public class SearchButtonListener implements ActionListener{
     private JTextField input; 
     private ChineseEtymPanel etymPanel; 
+    private ZhongwenPanel zhongwen; 
 
-    public SearchButtonListener(JTextField input, ChineseEtymPanel etymPanel) {
+    public SearchButtonListener(JTextField input, ChineseEtymPanel etymPanel, ZhongwenPanel zhongwen) {
         this.input = input;
         this.etymPanel = etymPanel; 
+        this.zhongwen = zhongwen; 
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {  
         String character = input.getText();
         etymPanel.getEtymology(character); 
+        zhongwen.search(character);
     }
     
 }

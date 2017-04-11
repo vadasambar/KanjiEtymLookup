@@ -79,6 +79,9 @@ public class ParallelDownloader {
                 for (Path file : dirStream) {
                     Files.delete(file);
                 }
+                
+                // Q: why do I need to delete the directory and create it again ? I can just use empty the dir
+                // and use it again. 30/3/17
                 Files.delete(newDirPath); // delete if already exists and proceed to create new
             }
 

@@ -12,6 +12,7 @@ import javax.swing.*;
 import javax.swing.text.PlainDocument;
 import searchpanel.showkanjivariants.KanjiVariantMachine;
 import webpagepanel.ChineseEtymPanel;
+import zhongwenpanel.ZhongwenPanel;
 
 /**
  *
@@ -83,7 +84,7 @@ public class SearchPanel extends JPanel {
     }   
     
     
-    public void setSearchButtonListener(ChineseEtymPanel etymPanel){
-        searchButton.addActionListener(new SearchButtonListener(inputBox,etymPanel));
+    public void setSearchButtonListener(ChineseEtymPanel etymPanel, ZhongwenPanel zhongwen ){
+        searchButton.addActionListener(new SearchButtonListener(inputBox, etymPanel, zhongwen));
     }
 }
