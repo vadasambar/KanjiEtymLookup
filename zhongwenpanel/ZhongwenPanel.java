@@ -42,12 +42,5 @@ public class ZhongwenPanel extends JPanel {
         this.add(etymDesScroller);
         this.add(etymTreeScroller);
 
-//        frame.pack();
-//        frame.setResizable(false);
-//        frame.setVisible(true);
     }
-
-//    public static void main(String[] args) {
-//        SwingUtilities.invokeLater(new ZhongwenPanel());
-//    }
 }

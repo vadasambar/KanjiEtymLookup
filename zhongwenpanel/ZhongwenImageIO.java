@@ -21,17 +21,6 @@ import javax.swing.ImageIcon;
  * @author suraj
  */
 public class ZhongwenImageIO {
-    // testing
-//    public static BufferedImage read(String imgLink) throws IOException {
-//        URL url = new URL(imgLink);
-//        System.out.println(url + " created...");
-//
-//        ImageIcon imgIcon = new ImageIcon(url);
-//        Image khariImage = imgIcon.getImage();
-//
-//        return writeToBufferedImage(khariImage);
-//    }
-    
         public static ImageIcon read(String imgLink) throws IOException {
         URL url = new URL(imgLink);
         System.out.println(url + " created...");

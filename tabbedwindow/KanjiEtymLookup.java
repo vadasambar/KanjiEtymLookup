@@ -49,6 +49,10 @@ public class KanjiEtymLookup implements Runnable {
         SearchPanel searchPanel = new SearchPanel();
         ChineseEtymPanel etymPanel = new ChineseEtymPanel();
         ZhongwenPanel zhongwen = new ZhongwenPanel();
+        
+        // update etymPanel and zhongwen panel in gui
+        // when respective objects are initialized 
+        // in listener
         searchPanel.setSearchButtonListener(etymPanel, zhongwen);
         
         JPanel tab2 = new JPanel();
