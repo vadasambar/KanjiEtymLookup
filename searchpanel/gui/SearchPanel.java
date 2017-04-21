@@ -12,6 +12,7 @@ import javax.swing.*;
 import javax.swing.text.PlainDocument;
 import searchpanel.showkanjivariants.KanjiVariantMachine;
 import webpagepanel.ChineseEtymPanel;
+import wikipanel.WictionaryPanel;
 import zhongwenpanel.ZhongwenPanel;
 
 /**
@@ -22,7 +23,7 @@ public class SearchPanel extends JPanel {
 
     private JTextField inputBox;
     private JButton searchButton;
-    private int MAX_CHAR_LIMIT = 1; 
+    private int MAX_CHAR_LIMIT = 1;
     private List<VariantKanjiBlock> variantBlockList;
 
     public SearchPanel() {
@@ -37,8 +38,7 @@ public class SearchPanel extends JPanel {
         searchButton = new JButton("Search");
         searchButton.setPreferredSize(new Dimension(90, 40));
         searchButton.setAlignmentX(CENTER_ALIGNMENT); // http://stackoverflow.com/questions/2560784/how-to-center-elements-in-the-boxlayout-using-center-of-the-element
-        
-        
+
         addListeners();
         addComponents();
     }
@@ -56,8 +56,8 @@ public class SearchPanel extends JPanel {
 
     private JPanel createVariantPanel() {
         JPanel variantPanel = new JPanel();
-        createVariantList(); 
-        
+        createVariantList();
+
         for (VariantKanjiBlock variant : variantBlockList) {
             variantPanel.add(variant);
         }
@@ -65,7 +65,7 @@ public class SearchPanel extends JPanel {
     }
 
     private void addListeners() {
-        inputBox.getDocument().addDocumentListener(new InputListener(variantBlockList, inputBox));         
+        inputBox.getDocument().addDocumentListener(new InputListener(variantBlockList, inputBox));
     }
 
     private void createVariantList() {
@@ -81,10 +81,12 @@ public class SearchPanel extends JPanel {
         this.add(inputBox);
         this.add(searchButton);
         this.add(createVariantPanel());
-    }   
-    
-    
-    public void setSearchButtonListener(ChineseEtymPanel etymPanel, ZhongwenPanel zhongwen ){
-        searchButton.addActionListener(new SearchButtonListener(inputBox, etymPanel, zhongwen));
+    }
+
+    public void setSearchButtonListener(
+            ChineseEtymPanel etymPanel,
+            ZhongwenPanel zhongwen,
+            WictionaryPanel wikiPanel) {
+        searchButton.addActionListener(new SearchButtonListener(inputBox, etymPanel, zhongwen, wikiPanel));
     }
 }

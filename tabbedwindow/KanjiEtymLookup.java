@@ -24,7 +24,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import searchpanel.gui.SearchPanel;
 import webpagepanel.ChineseEtymPanel; 
-import wikipanel.WikipediaPanel;
+import wikipanel.WictionaryPanel;
 import zhongwenpanel.ZhongwenPanel;
 /**
  *
@@ -50,22 +50,22 @@ public class KanjiEtymLookup implements Runnable {
         SearchPanel searchPanel = new SearchPanel();
         ChineseEtymPanel etymPanel = new ChineseEtymPanel();
         ZhongwenPanel zhongwen = new ZhongwenPanel();
-        WikipediaPanel wikiPanel = new WikipediaPanel(); 
+        WictionaryPanel wikiPanel = new WictionaryPanel(); 
         // update etymPanel and zhongwen panel in gui
         // when respective objects are initialized 
         // in listener
-        searchPanel.setSearchButtonListener(etymPanel, zhongwen);
+        searchPanel.setSearchButtonListener(etymPanel, zhongwen, wikiPanel);
         
         JPanel tab2 = new JPanel();
         tab2.add(new JLabel("Tab 二"));
 
-        JPanel tab3 = new JPanel();
-        tab3.add(wikiPanel);
-        tab3.setPreferredSize(new Dimension(500, 400));
+//        JPanel tab3 = new JPanel();
+//        tab3.add(wikiPanel);
+//        tab3.setPreferredSize(new Dimension(500, 400));
 
         tabber.addTab("Tab 一", icon, etymPanel);
         tabber.addTab("Tab 二", icon, zhongwen);
-        tabber.addTab("Tab 三", icon, tab3);
+        tabber.addTab("Tab 三", icon, wikiPanel);
         
         contentPane.add(searchPanel);
         contentPane.add(tabber);

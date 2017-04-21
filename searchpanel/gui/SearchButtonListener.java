@@ -9,28 +9,38 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 import webpagepanel.ChineseEtymPanel;
+import wikipanel.WictionaryPanel;
 import zhongwenpanel.ZhongwenPanel;
 
 /**
  *
  * @author suraj
  */
-public class SearchButtonListener implements ActionListener{
-    private JTextField input; 
-    private ChineseEtymPanel etymPanel; 
-    private ZhongwenPanel zhongwen; 
+public class SearchButtonListener implements ActionListener {
 
-    public SearchButtonListener(JTextField input, ChineseEtymPanel etymPanel, ZhongwenPanel zhongwen) {
+    private JTextField input;
+    private ChineseEtymPanel etymPanel;
+    private ZhongwenPanel zhongwen;
+    private WictionaryPanel wikiPanel; 
+
+    public SearchButtonListener(
+            JTextField input,
+            ChineseEtymPanel etymPanel,
+            ZhongwenPanel zhongwen,
+            WictionaryPanel wikiPanel) {
+        
         this.input = input;
-        this.etymPanel = etymPanel; 
-        this.zhongwen = zhongwen; 
+        this.etymPanel = etymPanel;
+        this.zhongwen = zhongwen;
+        this.wikiPanel = wikiPanel;
     }
-    
+
     @Override
-    public void actionPerformed(ActionEvent e) {  
+    public void actionPerformed(ActionEvent e) {
         String character = input.getText();
-        etymPanel.getEtymology(character); 
+        etymPanel.getEtymology(character);
         zhongwen.search(character);
+        wikiPanel.search(character);        
     }
-    
+
 }

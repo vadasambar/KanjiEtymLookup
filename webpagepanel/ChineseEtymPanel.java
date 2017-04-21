@@ -6,6 +6,7 @@ package webpagepanel;
  * and open the template in the editor.
  */
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -21,6 +22,7 @@ import webpagepanel.imagelogic.VariantImageGroup;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Set;
+import javax.swing.border.Border;
 import webpagepanel.paralleldownloader.ParallelDownloader;
 
 /**
@@ -32,12 +34,12 @@ public class ChineseEtymPanel extends JPanel {
     private String character;
     private Links links;
     private JLabel description;
+    private JPanel descriptionWrapper; 
     private SealPanel seal;
     private LSTSealPanel LSTSeal;
     private BronzePanel bronze;
     private OraclePanel oracle;
-    
-    
+
     public ChineseEtymPanel() {
         this.setLayout(new GridLayout()); // http://stackoverflow.com/questions/11009773/jscrollpane-does-not-appear-when-using-it-on-a-jpanel
         System.out.println("etym panel desu");
@@ -53,7 +55,7 @@ public class ChineseEtymPanel extends JPanel {
         addComponents();
         this.revalidate();
         this.repaint();
-        return this; 
+        return this;
     }
 
     private void createComponents() {
@@ -61,8 +63,17 @@ public class ChineseEtymPanel extends JPanel {
 
         description = new JLabel(links.getDescription());
         description.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-        description.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0)); // add spaces at top and bottom for aesthetic reasons
 
+        descriptionWrapper = new JPanel();
+        Border outsideBorder = BorderFactory.createEmptyBorder(10, 0, 10, 0); // white bg
+        Border insideBorder = BorderFactory.createEmptyBorder(10, 10, 10, 10);
+        Border compoundBorder = BorderFactory.createCompoundBorder(insideBorder, insideBorder);
+//        description.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10)); // add spaces at top and bottom for aesthetic reasons
+        description.setBorder(insideBorder);
+        description.setOpaque(true);
+        description.setBackground(Color.white);
+        descriptionWrapper.add(description);
+        descriptionWrapper.setBorder(outsideBorder);
         createSubPanels();
     }
 
@@ -85,7 +96,7 @@ public class ChineseEtymPanel extends JPanel {
         JPanel outerPanel = new JPanel();
         outerPanel.setLayout(new BoxLayout(outerPanel, BoxLayout.PAGE_AXIS));
 
-        outerPanel.add(description);
+        outerPanel.add(descriptionWrapper);
         outerPanel.add(seal);
         outerPanel.add(LSTSeal);
         outerPanel.add(bronze);

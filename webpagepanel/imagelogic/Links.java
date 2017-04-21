@@ -29,7 +29,11 @@ public class Links {
 
                 try {
                     String pageLink = baseLink + character;
-                    pageDOM = Jsoup.connect(pageLink).timeout(0).get(); // timeout(0) to set no timeout limit (infinity)
+                    int timeOutLimit = 1000 * 60 * 2;  // 1 minute of time out limit
+//                    pageDOM = Jsoup.connect(pageLink).timeout(0).get(); // timeout(0) to set no timeout limit (infinity)
+                    // put a time out limit because chineseetymology.org can be down sometimes 
+                    // and the program just hangs
+                    pageDOM = Jsoup.connect(pageLink).timeout(timeOutLimit).get(); 
                     extractImgLinks();
 
                 } catch (IOException e) {
